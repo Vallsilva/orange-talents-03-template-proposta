@@ -1,5 +1,6 @@
 package br.com.zupacademy.valeria.propostas.propostas;
 
+import br.com.zupacademy.valeria.propostas.config.validacao.UniqueValue;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
 import org.hibernate.validator.group.GroupSequenceProvider;
@@ -16,7 +17,6 @@ import static br.com.zupacademy.valeria.propostas.propostas.TipoPessoa.PF;
 import static br.com.zupacademy.valeria.propostas.propostas.TipoPessoa.PJ;
 @GroupSequenceProvider(value = DefineTipoPessoa.class)
 public class PropostaRequest {
-
 
     @CPF(groups = PessoaFisica.class)
     @CNPJ(groups = PessoaJuridica.class)

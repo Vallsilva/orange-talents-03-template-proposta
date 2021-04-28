@@ -20,6 +20,9 @@ public class PropostaController {
     @PostMapping
     public ResponseEntity<?> criaProposta(@RequestBody @Valid PropostaRequest request, UriComponentsBuilder uriComponents){
 
+        if (propostaRepository.findByDocumento(request.getDocumento()).isPresent()){
+            return ResponseEntity.unprocessableEntity().build();
+        }
         PropostaModel propostaModel = request.toModel();
 
         propostaRepository.save(propostaModel);
