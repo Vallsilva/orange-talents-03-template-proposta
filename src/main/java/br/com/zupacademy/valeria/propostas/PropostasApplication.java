@@ -1,4 +1,4 @@
-package br.com.zupacademy.valeria.propostas.propostas;
+package br.com.zupacademy.valeria.propostas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
