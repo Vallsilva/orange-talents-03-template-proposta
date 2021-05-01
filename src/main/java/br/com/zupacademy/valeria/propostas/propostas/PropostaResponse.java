@@ -9,13 +9,16 @@ public class PropostaResponse {
     private String nome;
     private String endereco;
     private BigDecimal salario;
+    private String resultadoSolicitacao;
 
-    public PropostaResponse(PropostaModel propostaModel) {
+    public PropostaResponse(PropostaModel propostaModel, RetornoSolicitacaoProposta retornoSolicitacaoProposta) {
         this.documento = propostaModel.getDocumento();
         this.email = propostaModel.getEmail();
         this.nome = propostaModel.getNome();
         this.endereco = propostaModel.getEndereco();
         this.salario = propostaModel.getSalario();
+        this.resultadoSolicitacao = retornoSolicitacaoProposta.getResultadoSolicitacao();
+
     }
 
     public String getDocumento() {
@@ -36,5 +39,9 @@ public class PropostaResponse {
 
     public BigDecimal getSalario() {
         return salario;
+    }
+
+    public String getResultadoSolicitacao() {
+        return resultadoSolicitacao;
     }
 }

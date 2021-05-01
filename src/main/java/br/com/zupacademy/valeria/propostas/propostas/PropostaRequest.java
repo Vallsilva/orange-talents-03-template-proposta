@@ -18,10 +18,10 @@ import static br.com.zupacademy.valeria.propostas.propostas.TipoPessoa.PJ;
 @GroupSequenceProvider(value = DefineTipoPessoa.class)
 public class PropostaRequest {
 
+
     @CPF(groups = PessoaFisica.class)
     @CNPJ(groups = PessoaJuridica.class)
     private String documento;
-
     @NotNull
     private TipoPessoa tipoPessoa;
     @NotBlank @Email
@@ -42,6 +42,8 @@ public class PropostaRequest {
         this.endereco = endereco;
         this.salario = salario;
     }
+
+
 
     public PropostaModel toModel() {
         return new PropostaModel(this.tipoPessoa, this.documento, this.email, this.nome, this.endereco, this.salario);
