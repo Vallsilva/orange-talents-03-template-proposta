@@ -7,10 +7,7 @@ import br.com.zupacademy.valeria.propostas.propostas.consulta.EnviaSolicitacaoPr
 import br.com.zupacademy.valeria.propostas.propostas.consulta.RetornoSolicitacaoProposta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -24,6 +21,7 @@ public class PropostaController {
 
     @Autowired
     private EnviaProposta enviaProposta;
+
 
     @Autowired
     private AtrelaProposta atrelaProposta;
@@ -53,6 +51,18 @@ public class PropostaController {
         return ResponseEntity.created(uriComponents.path("proposta/{id}").buildAndExpand(propostaModel.getId()).toUri()).body(propostaResponse);
     }
 
+    @GetMapping("/proposta/{id}")
+    public ResponseEntity<PropostaResponse> getPropostaId(@PathVariable Long id){
+
+        PropostaModel propostaModel = propostaRepository.getOne(id);
+        EnviaSolicitacaoProposta enviaSolicitacao = new EnviaSolicitacaoProposta(propostaModel);
+        RetornoSolicitacaoProposta retornoSolicitacaoProposta = enviaProposta.enviaProposta(enviaSolicitacao);
+        RetornoCartaoGerado cartaoGerado = atrelaProposta.atrelaCartaoAProposta(enviaSolicitacao);
+        PropostaResponse propostaResponse = new PropostaResponse(propostaModel, retornoSolicitacaoProposta, cartaoGerado);
+
+
+        return ResponseEntity.ok(propostaResponse);
+    }
 
 
 
