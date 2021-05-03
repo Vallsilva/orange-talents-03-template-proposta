@@ -1,4 +1,4 @@
-package br.com.zupacademy.valeria.propostas.propostas;
+package br.com.zupacademy.valeria.propostas.propostas.consulta;
 
 public class RetornoSolicitacaoProposta {
 

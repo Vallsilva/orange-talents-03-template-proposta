@@ -1,4 +1,6 @@
-package br.com.zupacademy.valeria.propostas.propostas;
+package br.com.zupacademy.valeria.propostas.propostas.consulta;
+
+import br.com.zupacademy.valeria.propostas.propostas.PropostaModel;
 
 public class EnviaSolicitacaoProposta {
 
